@@ -24,7 +24,7 @@
 
 Локальный запуск:
   ```bash
-  git clone <URL_репозитория>
+  git clone https://github.com/KirillGusev0/xlsx_parser.git
   cd xlsx_parser
   python3 -m venv venv
 
