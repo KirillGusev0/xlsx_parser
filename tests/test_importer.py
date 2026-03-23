@@ -14,7 +14,7 @@ class TestImporter(TestCase):
             "message": "World",
         }
 
-        validate_row(data) 
+        validate_row(data)
 
     def test_validate_row_invalid_email(self):
         data = {

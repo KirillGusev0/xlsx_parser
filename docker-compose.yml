@@ -1,0 +1,35 @@
+version: "3.9"
+
+services:
+
+  db:
+    image: postgres:16
+    environment:
+      POSTGRES_DB: parser_db
+      POSTGRES_USER: parser_user
+      POSTGRES_PASSWORD: parser_pass
+
+    ports:
+      - "5434:5432"
+
+  web:
+    build: .
+
+    command: >
+      sh -c "
+      sleep 5 &&
+      python manage.py migrate &&
+      python manage.py runserver 0.0.0.0:8003
+      "
+
+    volumes:
+      - .:/app
+
+    ports:
+      - "8003:8003"
+
+    env_file:
+      - .env
+
+    depends_on:
+      - db
