@@ -22,6 +22,35 @@
     имитирует отправку
     обновляет статус записи
 
+Локальный запуск:
+  ```bash
+  git clone <URL_репозитория>
+  cd xlsx_parser
+  python3 -m venv venv
+
+  # for Linux / macOS
+  source venv/bin/activate
+
+  # for Windows
+  venv\Scripts\activate      
+  
+  pip install --upgrade pip
+  pip install -r requirements.txt
+  
+  python manage.py migrate
+  
+  python manage.py runserver 8003
+  ```
+  
+  После чего перейдите по адресу: http://127.0.0.1:8003
+Запуск через Docker:
+   ```bash
+  docker-compose up --build
+  docker-compose exec web python manage.py migrate
+   ```
+  После чего перейдите по адресу: http://127.0.0.1:8003
+
+
 ТЗ: Необходимо реализовать механизм импорта рассылок из файла формата XLSX с последующей отправкой писем. Каждая строка файла содержит данные письма, которое должно быть отправлено пользователю. Файл может содержать большое количество записей.
 
 Импорт должен запускаться через Django management command.
