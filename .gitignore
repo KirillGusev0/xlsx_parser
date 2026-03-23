@@ -2,3 +2,6 @@ __pycache__/
 *.pyc
 *.pyo
 *.pyd
+# databases
+db.sqlite3
+*.sqlite3
