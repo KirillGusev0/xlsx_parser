@@ -7,25 +7,47 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='EmailTask',
+            name="EmailTask",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('external_id', models.CharField(max_length=255, unique=True)),
-                ('user_id', models.IntegerField()),
-                ('email', models.EmailField(max_length=254)),
-                ('subject', models.CharField(max_length=255)),
-                ('message', models.TextField()),
-                ('status', models.CharField(choices=[('pending', 'Pending'), ('sent', 'Sent'), ('error', 'Error')], default='pending', max_length=20)),
-                ('error_message', models.TextField(blank=True, null=True)),
-                ('created_at', models.DateTimeField(auto_now_add=True)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("external_id", models.CharField(max_length=255, unique=True)),
+                ("user_id", models.IntegerField()),
+                ("email", models.EmailField(max_length=254)),
+                ("subject", models.CharField(max_length=255)),
+                ("message", models.TextField()),
+                (
+                    "status",
+                    models.CharField(
+                        choices=[
+                            ("pending", "Pending"),
+                            ("sent", "Sent"),
+                            ("error", "Error"),
+                        ],
+                        default="pending",
+                        max_length=20,
+                    ),
+                ),
+                ("error_message", models.TextField(blank=True, null=True)),
+                ("created_at", models.DateTimeField(auto_now_add=True)),
             ],
             options={
-                'indexes': [models.Index(fields=['external_id'], name='parser_emai_externa_9aea88_idx')],
+                "indexes": [
+                    models.Index(
+                        fields=["external_id"], name="parser_emai_externa_9aea88_idx"
+                    )
+                ],
             },
         ),
     ]

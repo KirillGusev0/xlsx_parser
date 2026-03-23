@@ -13,15 +13,11 @@ def send_email(task: EmailTask):
     delay = random.randint(5, 20)
     time.sleep(delay)
 
-    logger.info(
-        f"Send EMAIL to={task.email} subject={task.subject} delay={delay}s"
-    )
+    logger.info(f"Send EMAIL to={task.email} subject={task.subject} delay={delay}s")
 
 
 def process_pending_emails(limit: int = 10):
-    tasks = list(
-        EmailTask.objects.filter(status="pending")[:limit]
-    )
+    tasks = list(EmailTask.objects.filter(status="pending")[:limit])
 
     if not tasks:
         return 0

@@ -51,11 +51,12 @@ def validate_row(data: dict):
 
     if not data["message"]:
         raise ValueError("message is required")
-    
+
+
 def import_from_xlsx(file_path: str) -> ImportResult:
-    
+
     result = ImportResult()
-    
+
     result.start_time = time.time()
 
     workbook = load_workbook(filename=file_path, read_only=True)
@@ -72,9 +73,7 @@ def import_from_xlsx(file_path: str) -> ImportResult:
         if field not in header_map:
             raise ValueError(f"Missing required column: {field}")
 
-    existing_ids = set(
-        EmailTask.objects.values_list("external_id", flat=True)
-    )
+    existing_ids = set(EmailTask.objects.values_list("external_id", flat=True))
 
     for row in rows:
         result.total += 1
@@ -110,5 +109,5 @@ def import_from_xlsx(file_path: str) -> ImportResult:
             result.errors += 1
 
     result.end_time = time.time()
-    
+
     return result
